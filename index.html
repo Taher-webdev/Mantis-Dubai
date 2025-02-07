@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="images">
+        <img src="Assets/mantis.png" alt="">
+        <img src="Assets/teaminnovation.jpeg" alt="">
+    </div>
+    <div class="contact-container">
+        <form method="POST" name="google-sheet">
+            <div class="contact-left">
+
+                <div class="contact-left-title">
+                    <h2>STAY UPDATED!</h2>
+                    <hr>
+                </div>
+                <input type="text" name="Name" placeholder="Your Name" class="contact-inputs" required>
+                <input type="number" name="Mobile" placeholder="Your Phone Number" class="contact-inputs" required>
+                <button type="submit" name="Submit">Submit <img src="Assets/arrow_icon.png"></button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxzBYsYiCCb7cpusHAldgyeVbeGVpp6b0kIpLkGnxsSE-8I-GjYUz4LcnW3yYM_Yp_a/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thanks You.."))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+
+
+</body>
+
+</html>
